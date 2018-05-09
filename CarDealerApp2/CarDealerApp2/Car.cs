@@ -13,35 +13,49 @@ namespace CarDealerApp2
         public string TypSilnika { get; set; }
         public int Cena { get; set; }
 
+       
 
         public void Wypisz()
         {
-            Console.WriteLine("Marka: " + this.Marka, "Rocznik: " + this.Rocznik, "Typ Silnika: " + this.TypSilnika, "Cena: " + this.Cena);
+
+
+            Console.WriteLine("Marka: {0}, Rocznik: {1}, Typ silnika: {2}, Cena: {3}", Marka, Rocznik, TypSilnika, Cena);
+
+            Console.WriteLine();
         }
 
-        public Car(string Car, int Year, string E, int Price) //tworzymy konstruktor w z 4 parametrami które muszą być przekazane
+        
+
+        public Car(string Car, int Year, string E, int Price) //konstruktor w z 4 parametrami które muszą być przekazane
         {
             Marka = Car;
             Rocznik = Year;
             TypSilnika = E;
             Cena = Price;
+
+            
         }
 
-        public Car()
+        public Car()//konstruktor bez parametrowy
         {
             Marka = "Fiat Punto";
             Rocznik = 2005;
             TypSilnika = "Benzyna";
-            Cena = 4000;
+            Cena = 6000;
+
+            
         }
 
-        public Car(string Car)
+        public Car(string Car)//konstruktor z 1 parametrem do przekazania
         {
             Marka = Car;
-            Rocznik = 2005;
+            Rocznik = 2007;
             TypSilnika = "Benzyna";
-            Cena = 4000;
+            Cena = 7000;
+
+            
 
         }
+        
     }
 }
