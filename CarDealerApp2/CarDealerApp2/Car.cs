@@ -42,9 +42,9 @@ namespace CarDealerApp2
         public Car()//konstruktor bez parametrowy
         {
             Marka = CarType.Fiat;
-            Rocznik = 2005;
-            TypSilnika = EngineType.Benzyna;
-            Cena = 6000;
+            Rocznik = 2010;
+            TypSilnika = EngineType.Diezel;
+            Cena = 15000;
 
 
         }
@@ -52,8 +52,8 @@ namespace CarDealerApp2
         public Car(CarType car)//konstruktor z 1 parametrem do przekazania
         {
             Marka = car;
-            Rocznik = 2007;
-            TypSilnika =EngineType.Diezel;
+            Rocznik = 9999;
+            TypSilnika =EngineType.Inny;
             Cena = 7000;
 
 
