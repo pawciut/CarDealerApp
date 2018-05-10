@@ -52,7 +52,7 @@ namespace CarDealerApp2
         public Car(CarType car)//konstruktor z 1 parametrem do przekazania
         {
             Marka = car;
-            Rocznik = 9999;
+            Rocznik = 2001;
             TypSilnika =EngineType.Inny;
             Cena = 7000;
 

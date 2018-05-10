@@ -6,5 +6,11 @@ using System.Threading.Tasks;
 
 namespace CarDealerApp2
 {
-    public enum CarType { Fiat, BMW, Ford, Opel }
+    public enum CarType
+    {
+        Fiat,
+        BMW,
+        Ford,
+        Opel 
+    }
 }
