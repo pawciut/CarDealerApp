@@ -8,54 +8,58 @@ namespace CarDealerApp2
 {
     public class Car
     {
-        public string Marka { get; set; } //tworzymy własciwości
+        public CarType Marka { get; set; }
         public int Rocznik { get; set; }
-        public string TypSilnika { get; set; }
-        public int Cena { get; set; }
+        public EngineType TypSilnika { get; set; }
+        public decimal Cena { get; set; }
 
        
+
+
+
 
         public void Wypisz()
         {
 
-
+            //Console.WriteLine("Marka: " + Marka, "Rocznik: " + Rocznik, "Typ Silnika" + TypSilnika, "Cena: " + Cena);
             Console.WriteLine("Marka: {0}, Rocznik: {1}, Typ silnika: {2}, Cena: {3}", Marka, Rocznik, TypSilnika, Cena);
 
             Console.WriteLine();
         }
 
-        
 
-        public Car(string Car, int Year, string E, int Price) //konstruktor w z 4 parametrami które muszą być przekazane
+
+        public Car(CarType car, int year, EngineType E, int price) //konstruktor w z 4 parametrami które muszą być przekazane
         {
-            Marka = Car;
-            Rocznik = Year;
+            Marka = car;
+            Rocznik = year;
             TypSilnika = E;
-            Cena = Price;
+            Cena = price;
 
-            
+
         }
 
         public Car()//konstruktor bez parametrowy
         {
-            Marka = "Fiat Punto";
+            Marka = CarType.Fiat;
             Rocznik = 2005;
-            TypSilnika = "Benzyna";
+            TypSilnika = EngineType.Benzyna;
             Cena = 6000;
 
-            
+
         }
 
-        public Car(string Car)//konstruktor z 1 parametrem do przekazania
+        public Car(CarType car)//konstruktor z 1 parametrem do przekazania
         {
-            Marka = Car;
+            Marka = car;
             Rocznik = 2007;
-            TypSilnika = "Benzyna";
+            TypSilnika =EngineType.Diezel;
             Cena = 7000;
 
-            
+
 
         }
-        
+
+
     }
 }
