@@ -13,9 +13,8 @@ namespace CarDealerApp2
         public EngineType TypSilnika { get; set; }
         public decimal Cena { get; set; }
 
-       
 
-
+        
 
 
         public void Wypisz()
@@ -29,7 +28,9 @@ namespace CarDealerApp2
 
 
 
-        public Car(CarType car, int year, EngineType E, int price) //konstruktor w z 4 parametrami które muszą być przekazane
+
+
+        public Car(CarType car, int year, EngineType E, int price)
         {
             Marka = car;
             Rocznik = year;
@@ -39,7 +40,7 @@ namespace CarDealerApp2
 
         }
 
-        public Car()//konstruktor bez parametrowy
+        public Car()
         {
             Marka = CarType.Fiat;
             Rocznik = 2010;
@@ -49,17 +50,16 @@ namespace CarDealerApp2
 
         }
 
-        public Car(CarType car)//konstruktor z 1 parametrem do przekazania
+        public Car(CarType car)
         {
             Marka = car;
             Rocznik = 2001;
             TypSilnika =EngineType.Inny;
             Cena = 7000;
 
-
-
         }
-
-
+        
     }
+   
+    
 }
