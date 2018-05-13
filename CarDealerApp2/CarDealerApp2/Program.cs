@@ -10,7 +10,7 @@ namespace CarDealerApp2
     {
         static List<Car> ListaSamochodow = new List<Car>();
 
-        Car Auto = new Car();
+
 
         public static void GetRandomCarType()
         {
@@ -49,17 +49,18 @@ namespace CarDealerApp2
 
             ShowConstructorAction();
 
+
             foreach (Car xCar in ListaSamochodow)
             {
                 xCar.Wypisz();
             }
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-            //GenerateRandomCar();
-            GetRandomCarType();
-            GetRandomEngine();
-            GetRandomYear();
-            TEST();
+            GenerateRandomCar();
+            //GetRandomCarType();
+            //GetRandomEngine();
+            //GetRandomYear();
+            //TEST();
             Console.ReadKey();
         }
         public static void ShowConstructorAction()
@@ -79,107 +80,102 @@ namespace CarDealerApp2
 
         }
 
-        //public static Car GenerateRandomCar()
-        //{
+        
 
-        //}
-
-        public static void TEST()
+        public static void MnoznikCarType()
         {
-            string carModel;
-            string carManufacturer = "unknown";
+            CarType carType = new CarType();
+            decimal mnoznikCarType;
 
-            Console.Write("Wpisz Model: ");
 
-            carModel = Console.ReadLine();
-
-            switch (carModel)
+            switch (carType)
             {
-                case "Astra":
-                case "Corsa":
-                case "Insignia":
-                    carManufacturer = "Opel";
+                case CarType.BMW:
+                    mnoznikCarType = 3;
                     goto default;
-                case "Ceed":
-                    carManufacturer = "Kia";
+                case CarType.Fiat:
+                    mnoznikCarType = 0.5m;
                     goto default;
-                case "Punto":
-                    carManufacturer = "Fiat";
+                case CarType.Ford:
+                    mnoznikCarType = 1.2m;
                     goto default;
+                case CarType.Opel:
+                    mnoznikCarType = 0.8m;
+                    goto default;
+
                 default:
-                    Console.WriteLine(carModel + " jest marki " + carManufacturer);
                     break;
             }
+
+        }
+        public static void MnoznikEngineType()
+        {
+            EngineType engineType = new EngineType();
+            decimal mnoznikEngineType;
+
+            switch (engineType)
+            {
+                case EngineType.Benzyna:
+                    mnoznikEngineType = 1.2m;
+                    goto default;
+                case EngineType.Diezel:
+                    mnoznikEngineType = 1;
+                    goto default;
+                case EngineType.Inny:
+                    mnoznikEngineType = 0.9m;
+                    goto default;
+
+                default:
+                    break;
+
+            }
+        }
+
+        
+        public static Car GenerateRandomCar()
+        {
+            Car Auto = new Car();
+            GetRandomCarType();
+            GetRandomEngine();
+            GetRandomYear();
+
+            cena = MnoznikCarType * MnoznikEngineType; // * mnożnik roku
+
+
+
+            return Auto;
         }
     }
 }
 
 
+        //public static void TEST()
+        //{
+        //    string carModel;
+        //    string carManufacturer = "unknown";
 
+        //    Console.Write("Wpisz Model: ");
 
+        //    carModel = Console.ReadLine();
 
-
-    //public static void MnoznikCarType()
-    //{
-    //    CarType carType;
-    //    decimal mnoznikCarType;
-
-
-    //    switch (carType)
-    //    {
-    //        case CarType.BMW:
-    //            mnoznikCarType = 3;
-    //            goto default;
-    //        case CarType.Fiat:
-    //            mnoznikCarType = 0.5m;
-    //            goto default;
-    //        case CarType.Ford:
-    //            mnoznikCarType = 1.2m;
-    //            goto default;
-    //        case CarType.Opel:
-    //            mnoznikCarType = 0.8m;
-    //            goto default;
-
-    //        default:
-    //            break;
-    //    }
-    //}
-    //public static void MoznikEngineType()
-    //{
-    //    EngineType engineType;
-    //    decimal mnoznikEngineType;
-
-    //    switch (engineType)
-    //    {
-    //        case EngineType.Benzyna:
-    //            mnoznikEngineType = 1.2m;
-    //            goto default;
-    //        case EngineType.Diezel:
-    //            mnoznikEngineType = 1;
-    //            goto default;
-    //        case EngineType.Inny:
-    //            mnoznikEngineType = 0.9m;
-    //            goto default;
-
-    //        default:
-    //            break;
-
-    //    }
-    //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //    switch (carModel)
+        //    {
+        //        case "Astra":
+        //        case "Corsa":
+        //        case "Insignia":
+        //            carManufacturer = "Opel";
+        //            goto default;
+        //        case "Ceed":
+        //            carManufacturer = "Kia";
+        //            goto default;
+        //        case "Punto":
+        //            carManufacturer = "Fiat";
+        //            goto default;
+        //        default:
+        //            Console.WriteLine(carModel + " jest marki " + carManufacturer);
+        //            break;
+        //    }
+        //}
 
 
 //ListaSamochodow.Add(new Car());
