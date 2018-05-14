@@ -12,24 +12,27 @@ namespace CarDealerApp2
 
 
 
-        public static void GetRandomCarType()
+        public static CarType GetRandomCarType()
         {
             Random random = new Random();
             Array carRandom = Enum.GetValues(typeof(CarType));
             CarType randomCar = (CarType)carRandom.GetValue(random.Next(carRandom.Length));
-
-            Console.WriteLine("LOSOWY SAMOCHOD: " + randomCar);
+           
+            return randomCar;
+           
 
         }
-        public static void GetRandomEngine()
+        public static EngineType GetRandomEngine()
         {
             Random random = new Random();
             Array engineTypeRandom = Enum.GetValues(typeof(EngineType));
             EngineType randomEngine = (EngineType)engineTypeRandom.GetValue(random.Next(engineTypeRandom.Length));
 
-            Console.WriteLine("LOSOWY TYP SILNIKA: " + randomEngine);
+            return randomEngine;
+            
         }
-        public static void GetRandomYear()
+
+        public static int GetRandomYear()
         {
             Random random = new Random();
             int[] Rok;
@@ -37,9 +40,10 @@ namespace CarDealerApp2
             Rok[0] = 2001;
             Rok[1] = 2008;
             Rok[2] = 2010;
-            int Year = random.Next(Rok.Length);
+            int year = random.Next(Rok.Length);
 
-            Console.WriteLine("LOSOWY ROK: " + Rok[Year]);
+            return year;
+
         }
 
         static void Main(string[] args)
@@ -82,68 +86,105 @@ namespace CarDealerApp2
 
         
 
-        public static void MnoznikCarType()
+        public static decimal MnoznikCarType(CarType carType)          //chce by ta metoda przypisywała mi do randomowego cara (wylosowanego) wartosc z casea - chce by to był Auto.Marka
         {
-            CarType carType = new CarType();
             decimal mnoznikCarType;
-
-
-            switch (carType)
+            
+            switch (carType)//chce porownać randomowy samochod
             {
                 case CarType.BMW:
                     mnoznikCarType = 3;
-                    goto default;
+                    break;
                 case CarType.Fiat:
                     mnoznikCarType = 0.5m;
-                    goto default;
+                   break;
                 case CarType.Ford:
                     mnoznikCarType = 1.2m;
-                    goto default;
+                   break;
                 case CarType.Opel:
                     mnoznikCarType = 0.8m;
-                    goto default;
+                    break;
 
                 default:
+                    mnoznikCarType = 0;
                     break;
             }
-
+            return mnoznikCarType;
         }
-        public static void MnoznikEngineType()
+
+        public static decimal MnoznikEngineType(EngineType engineType) //typ zwracany decimal - parametry wejsciowe engineType
         {
-            EngineType engineType = new EngineType();
+            
             decimal mnoznikEngineType;
 
-            switch (engineType)
+            switch (engineType)//sprawdza engineType
             {
                 case EngineType.Benzyna:
                     mnoznikEngineType = 1.2m;
-                    goto default;
+                    break;
                 case EngineType.Diezel:
                     mnoznikEngineType = 1;
-                    goto default;
+                    break;
                 case EngineType.Inny:
                     mnoznikEngineType = 0.9m;
-                    goto default;
-
-                default:
                     break;
 
+                default:
+                    mnoznikEngineType = 0;//jeśli engine type nie ma na liscie daj mu wartosc 0 
+                    break;
             }
+            return mnoznikEngineType;//zwróc wartosc mnoznika
         }
 
-        
+
+                                                            //stawka_za_rocznik przyjmuje wartość:
+                                                            //(rok - 1994) * 1500
+        public static decimal MnoznikYear(int rocznik)
+        {
+            return (rocznik - 1994) * 1500;
+        }
+
+        public static decimal CreateCena(CarType carType, EngineType engineType, int rocznik)//zwracany ma byc decimal
+        {
+       
+            decimal cena;
+
+            
+            
+
+            cena = MnoznikCarType(carType) * MnoznikEngineType(engineType) * MnoznikYear(rocznik);
+            return cena;
+
+
+            
+
+            return MnoznikCarType(carType) * MnoznikEngineType(engineType) * MnoznikYear(rocznik);
+        }
+
+
         public static Car GenerateRandomCar()
         {
-            Car Auto = new Car();
-            GetRandomCarType();
-            GetRandomEngine();
-            GetRandomYear();
+            Car auto = new Car();
+            
 
-            cena = MnoznikCarType * MnoznikEngineType; // * mnożnik roku
+            auto.Marka = GetRandomCarType();                   
+            auto.TypSilnika = GetRandomEngine();                
+            auto.Rocznik = GetRandomYear();                     
+
+
+            auto.Cena = CreateCena(GetRandomCarType(), GetRandomEngine(), GetRandomYear());
+
+            auto.Wypisz();
+
+            //Console.WriteLine(auto.Marka);
+            //Console.WriteLine(auto.Rocznik);
+            //Console.WriteLine(auto.TypSilnika);
+            //Console.WriteLine(auto.Cena);
 
 
 
-            return Auto;
+
+            return auto;
         }
     }
 }
