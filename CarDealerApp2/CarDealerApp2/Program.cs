@@ -35,16 +35,19 @@ namespace CarDealerApp2
         public static int GetRandomYear()
         {
             Random random = new Random();
-            int[] Rok;
-            Rok = new int[3];
-            Rok[0] = 2001;
-            Rok[1] = 2008;
-            Rok[2] = 2010;
-            int year = random.Next(Rok.Length);
-
+            int year = random.Next(2000, 2018);
             return year;
-
         }
+        
+        //Random random = new Random();
+        //int[] Rok;
+        //Rok = new int[3];
+        //Rok[0] = 2001;
+        //Rok[1] = 2008;
+        //Rok[2] = 2010;
+        //int year = random.Next(Rok.Length);
+
+        //return year;
 
         static void Main(string[] args)
         {
