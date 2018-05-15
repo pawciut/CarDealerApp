@@ -8,13 +8,14 @@ namespace CarDealerApp2
 {
     class Program
     {
+        static Random random = new Random();
         static List<Car> ListaSamochodow = new List<Car>();
 
 
 
         public static CarType GetRandomCarType()
         {
-            Random random = new Random();
+            
             Array carRandom = Enum.GetValues(typeof(CarType));
             CarType randomCar = (CarType)carRandom.GetValue(random.Next(carRandom.Length));
            
@@ -24,7 +25,6 @@ namespace CarDealerApp2
         }
         public static EngineType GetRandomEngine()
         {
-            Random random = new Random();
             Array engineTypeRandom = Enum.GetValues(typeof(EngineType));
             EngineType randomEngine = (EngineType)engineTypeRandom.GetValue(random.Next(engineTypeRandom.Length));
 
@@ -34,8 +34,7 @@ namespace CarDealerApp2
 
         public static int GetRandomYear()
         {
-            Random random = new Random();
-            int year = random.Next(2000, 2018);
+            int year = random.Next(1995, 2018);
             return year;
         }
         
@@ -51,23 +50,23 @@ namespace CarDealerApp2
 
         static void Main(string[] args)
         {
-            ListaSamochodow.Add(new Car(CarType.Fiat, 2005, EngineType.Benzyna, 4000));
-            ListaSamochodow.Add(new Car(CarType.BMW, 2008, EngineType.Diezel, 5000));
+            //ListaSamochodow.Add(new Car(CarType.Fiat, 2005, EngineType.Benzyna, 4000));
+            //ListaSamochodow.Add(new Car(CarType.BMW, 2008, EngineType.Diezel, 5000));
 
-            ShowConstructorAction();
+            //ShowConstructorAction();
 
 
-            foreach (Car xCar in ListaSamochodow)
-            {
-                xCar.Wypisz();
-            }
-            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            //foreach (Car xCar in ListaSamochodow)
+            //{
+            //    xCar.Wypisz();
+            //}
+            //Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-            GenerateRandomCar();
-            //GetRandomCarType();
-            //GetRandomEngine();
-            //GetRandomYear();
+            //GenerateRandomCar();
+            GenerateCars();
+            
             //TEST();
+
             Console.ReadKey();
         }
         public static void ShowConstructorAction()
@@ -77,9 +76,9 @@ namespace CarDealerApp2
             Car Car2 = new Car(CarType.BMW);
             Car Car3 = new Car(CarType.Fiat, 2008, EngineType.Diezel, 4000);
 
-            ListaSamochodow.Add(Car1);
-            ListaSamochodow.Add(Car2);
-            ListaSamochodow.Add(Car3);
+            //ListaSamochodow.Add(Car1);
+            //ListaSamochodow.Add(Car2);
+            //ListaSamochodow.Add(Car3);
 
             //Car1.Wypisz();
             //Car2.Wypisz();
@@ -89,11 +88,11 @@ namespace CarDealerApp2
 
         
 
-        public static decimal MnoznikCarType(CarType carType)          //chce by ta metoda przypisywała mi do randomowego cara (wylosowanego) wartosc z casea - chce by to był Auto.Marka
+        public static decimal MnoznikCarType(CarType carType)                       //chce by ta metoda przypisywała mi do randomowego cara (wylosowanego) wartosc z casea - chce by to był Auto.Marka
         {
             decimal mnoznikCarType;
             
-            switch (carType)//chce porownać randomowy samochod
+            switch (carType)                                                        //chce porownać randomowy samochod
             {
                 case CarType.BMW:
                     mnoznikCarType = 3;
@@ -115,12 +114,12 @@ namespace CarDealerApp2
             return mnoznikCarType;
         }
 
-        public static decimal MnoznikEngineType(EngineType engineType) //typ zwracany decimal - parametry wejsciowe engineType
+        public static decimal MnoznikEngineType(EngineType engineType)              //typ zwracany decimal - parametry wejsciowe engineType
         {
             
             decimal mnoznikEngineType;
 
-            switch (engineType)//sprawdza engineType
+            switch (engineType)                                                     //sprawdza engineType
             {
                 case EngineType.Benzyna:
                     mnoznikEngineType = 1.2m;
@@ -133,21 +132,21 @@ namespace CarDealerApp2
                     break;
 
                 default:
-                    mnoznikEngineType = 0;//jeśli engine type nie ma na liscie daj mu wartosc 0 
+                    mnoznikEngineType = 0;                                            //jeśli engine type nie ma na liscie daj mu wartosc 0 
                     break;
             }
-            return mnoznikEngineType;//zwróc wartosc mnoznika
+            return mnoznikEngineType;                                                 //zwróc wartosc mnoznika
         }
 
 
-                                                            //stawka_za_rocznik przyjmuje wartość:
-                                                            //(rok - 1994) * 1500
+                                                                                      //stawka_za_rocznik przyjmuje wartość:
+                                                                                      //(rok - 1994) * 1500
         public static decimal MnoznikYear(int rocznik)
         {
             return (rocznik - 1994) * 1500;
         }
 
-        public static decimal CreateCena(CarType carType, EngineType engineType, int rocznik)//zwracany ma byc decimal
+        public static decimal CreateCena(CarType carType, EngineType engineType, int rocznik)                           //zwracany ma byc decimal
         {
        
             decimal cena;
@@ -177,20 +176,41 @@ namespace CarDealerApp2
 
             auto.Cena = CreateCena(GetRandomCarType(), GetRandomEngine(), GetRandomYear());
 
-            auto.Wypisz();
+            //auto.Wypisz();
 
             //Console.WriteLine(auto.Marka);
             //Console.WriteLine(auto.Rocznik);
             //Console.WriteLine(auto.TypSilnika);
             //Console.WriteLine(auto.Cena);
-
-
-
+            
 
             return auto;
         }
+
+        public static Car[] GenerateCars()
+        {
+            Car[] arr = new Car[20];                               
+            /*Car autko = GenerateRandomCar();  */                      
+
+            for (int i = 0; i < arr.Length; i++) 
+            {
+
+                arr[i] = GenerateRandomCar();                             /*GetRandomCarType(), GetRandomYear(), GetRandomEngine(), CreateCena());*/
+
+                arr[i].Wypisz();
+                
+              
+
+            }
+            return arr;
+            
+        }
+
     }
+
 }
+
+
 
 
         //public static void TEST()
